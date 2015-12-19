@@ -1,0 +1,20 @@
+{
+  "name": "webgl-experiment",
+  "version": "1.0.0",
+  "description": "Experimenting with WebGL for fun",
+  "main": "gulpfile.js",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-webserver": "^0.9.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/tparonen/webgl-experiment"
+  },
+  "author": "Tatu Paronen",
+  "license": "MIT"
+}
