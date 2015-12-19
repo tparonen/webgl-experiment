@@ -2,8 +2,10 @@
 
 var Model = function Model() {
 
-    // these values ensure that distance from
-    // origin is to all vertices equals to 1
+    // Adapted from the first edition of the
+    // OpenGL programming book.
+    // These values ensure that distance from
+    // origin is to all vertices equals to 1.
     var one = 0.525731112119133606;
     var two = 0.850650808352039932;
 
