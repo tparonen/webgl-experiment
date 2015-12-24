@@ -1,4 +1,4 @@
-# web-gl-experiment
+# webgl-experiment
 
 Experimenting with WebGL for fun.
 
