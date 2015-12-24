@@ -1,6 +1,6 @@
 'use strict';
 
-var Model = function Model() {
+var Ball = function Ball() {
 
     // Adapted from the first edition of the
     // OpenGL programming book.
@@ -46,9 +46,15 @@ var Model = function Model() {
         { v1: 9,  v2: 2,  v3: 5  },
         { v1: 7,  v2: 2,  v3: 11 }
     ];
+
+    this.translation = vec3.fromValues(0.0, 0.0, 0.0);
+    this.programId = 0;
+    this.color = {
+        r: 0.9, g: 0.2, b: 0.5
+    };
 };
 
-Model.prototype.subdivide = function subdivide(depth) {
+Ball.prototype.subdivide = function subdivide(depth) {
     var newPositions = this.vertexPositions.slice(),
         newIndices = [];
 
@@ -82,13 +88,13 @@ Model.prototype.subdivide = function subdivide(depth) {
         newIndices.push({ v1: idx12, v2: idx23, v3: idx31 });
     }
 
-    var result = Object.create(Model.prototype);
+    var result = new Ball();
     result.vertexPositions = newPositions;
     result.triangleIndices = newIndices;
     return result.subdivide(depth - 1);
 };
 
-Model.prototype.getTriangles = function getTriangles(index) {
+Ball.prototype.getTriangles = function getTriangles(index) {
     return this.triangleIndices.map(function(index) {
         return {
             v1: this.vertexPositions[index.v1],
@@ -96,4 +102,19 @@ Model.prototype.getTriangles = function getTriangles(index) {
             v3: this.vertexPositions[index.v3]
         };
     }.bind(this));
+};
+
+Ball.prototype.translate = function translate(x, y, z) {
+    this.translation = vec3.fromValues(x, y, z);
+    return this;
+};
+
+Ball.prototype.setProgramId = function setProgramId(programId) {
+    this.programId = programId;
+    return this;
+};
+
+Ball.prototype.setColor = function setColor(r, g, b) {
+    this.color = { r: r, g: g, b: b };
+    return this;
 };
